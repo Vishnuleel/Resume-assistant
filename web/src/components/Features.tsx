@@ -43,7 +43,7 @@ export function AtsPanel({ checks, source }: { checks: AtsCheck[]; source: strin
         <div className="min-w-0 flex-1">
           <p className="eyebrow">ATS format check</p>
           <div className="mt-2 mb-2">
-            <RatingChip score={score} />
+            <RatingChip score={score} kind="format" />
           </div>
           <p className="text-sm text-ink-2">
             <strong className="font-semibold text-ink">{passed}</strong> of {scored.length} checks passed

@@ -17,9 +17,13 @@ const TONE_CHIP = {
   weak: "bg-bad-soft text-bad",
 } as const;
 
-export function RatingChip({ score }: { score: number }) {
+const FORMAT_LABELS = { good: "ATS-friendly", fair: "A few fixes", weak: "Needs fixes" } as const;
+
+/** Score chip. `kind="format"` words it for the ATS format check instead of a job match. */
+export function RatingChip({ score, kind = "match" }: { score: number; kind?: "match" | "format" }) {
   const r = rating(score);
-  return <span className={cx("chip", TONE_CHIP[r.tone])}>{r.label}</span>;
+  const label = kind === "format" ? FORMAT_LABELS[r.tone] : r.label;
+  return <span className={cx("chip", TONE_CHIP[r.tone])}>{label}</span>;
 }
 
 /** Circular score meter. Animates from 0 on mount (skipped with reduced motion). */
