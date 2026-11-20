@@ -6,7 +6,7 @@ bullet points, writes a cover letter and prepares interview questions.
 
 It runs on your own computer, or you can deploy a copy to Render for other people to use.
 
-<!-- Live demo: add your https://<name>.onrender.com link here -->
+Live demo: <https://ai-resume-assistant-xt48.onrender.com> (free hosting, so the first visit after a quiet spell takes about 30 seconds to load)
 
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![React](https://img.shields.io/badge/React%20%2B%20Vite-Tailwind-0f766e)
