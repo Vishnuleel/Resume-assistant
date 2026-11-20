@@ -1,0 +1,677 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/space-grotesk";
+@import "@fontsource-variable/fraunces";
+@import "@fontsource-variable/fraunces/wght-italic.css";
+@import "@fontsource-variable/dm-sans";
+@import "@fontsource-variable/jetbrains-mono";
+@import "@fontsource/archivo-black";
+
+/*
+  Theme system.
+  <html data-theme="midnight|corporate|sage|brutalist|terminal" data-mode="light|dark">
+  1. [data-mode]                 shared status colours for light / dark
+  2. [data-theme]                shape: fonts, radius, border width, headline style
+  3. [data-theme][data-mode]     palette
+  Components only use the token names below, never raw colours.
+*/
+
+/* ---------------------------------------------------------------- 1. modes */
+:root,
+[data-mode="light"] {
+  --good: #15803d;
+  --good-soft: #dcf2e3;
+  --warn: #a84b06;
+  --warn-soft: #fbead2;
+  --bad: #b91c1c;
+  --bad-soft: #fbe2e2;
+  --shadow: 0 1px 2px rgb(15 23 42 / 0.04), 0 6px 20px -8px rgb(15 23 42 / 0.1);
+  --overlay: rgb(15 23 42 / 0.35);
+  color-scheme: light;
+}
+[data-mode="dark"] {
+  --good: #4ade80;
+  --good-soft: #12301e;
+  --warn: #f5a524;
+  --warn-soft: #3a2a10;
+  --bad: #f87171;
+  --bad-soft: #3a1717;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 10px 30px -12px rgb(0 0 0 / 0.6);
+  --overlay: rgb(0 0 0 / 0.55);
+  color-scheme: dark;
+}
+
+/* ---------------------------------------------------------------- 2. shapes */
+:root,
+[data-theme="midnight"] {
+  --font-body: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-head: "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --head-weight: 700;
+  --head-tracking: -0.035em;
+  --head-transform: none;
+  --head-leading: 1;
+  --r-card: 18px;
+  --r-ctl: 12px;
+  --r-btn: 12px;
+  --r-sm: 8px;
+  --r-pill: 999px;
+  --bw: 1px;
+  --ring-cap: round;
+}
+[data-theme="corporate"] {
+  --font-body: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-head: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --head-weight: 700;
+  --head-tracking: -0.025em;
+  --head-transform: none;
+  --head-leading: 1.05;
+  --r-card: 12px;
+  --r-ctl: 8px;
+  --r-btn: 8px;
+  --r-sm: 6px;
+  --r-pill: 6px;
+  --bw: 1px;
+  --ring-cap: butt;
+}
+[data-theme="sage"] {
+  --font-body: "DM Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-head: "Fraunces Variable", ui-serif, Georgia, serif;
+  --head-weight: 420;
+  --head-tracking: -0.02em;
+  --head-transform: none;
+  --head-leading: 1.04;
+  --r-card: 24px;
+  --r-ctl: 16px;
+  --r-btn: 999px;
+  --r-sm: 12px;
+  --r-pill: 999px;
+  --bw: 1px;
+  --ring-cap: round;
+}
+[data-theme="brutalist"] {
+  --font-body: "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-head: "Archivo Black", "Space Grotesk Variable", ui-sans-serif, sans-serif;
+  --head-weight: 400;
+  --head-tracking: -0.015em;
+  --head-transform: uppercase;
+  --head-leading: 0.95;
+  --r-card: 0px;
+  --r-ctl: 0px;
+  --r-btn: 0px;
+  --r-sm: 0px;
+  --r-pill: 0px;
+  --bw: 2px;
+  --ring-cap: butt;
+}
+[data-theme="terminal"] {
+  --font-body: "JetBrains Mono Variable", ui-monospace, monospace;
+  --font-head: "JetBrains Mono Variable", ui-monospace, monospace;
+  --head-weight: 600;
+  --head-tracking: -0.04em;
+  --head-transform: none;
+  --head-leading: 1.05;
+  --r-card: 6px;
+  --r-ctl: 4px;
+  --r-btn: 4px;
+  --r-sm: 3px;
+  --r-pill: 3px;
+  --bw: 1px;
+  --ring-cap: butt;
+}
+
+/* ---------------------------------------------------------------- 3. palettes */
+
+/* Midnight: deep navy with electric lime. */
+:root,
+[data-theme="midnight"][data-mode="dark"] {
+  --bg: #0a0e1a;
+  --surface: #111727;
+  --surface-2: #172036;
+  --line: #222c45;
+  --line-strong: #34405f;
+  --ink: #e9edf7;
+  --ink-2: #a7b0c8;
+  --ink-3: #8691ad;
+  --accent: #c6f432;
+  --accent-ink: #0a0e1a;
+  --accent-soft: #243110;
+  --accent-strong: #d9ff6b;
+  --accent-fg: #d4fb5c;
+  --mark: #36450f;
+  --ring-track: #1e2740;
+}
+[data-theme="midnight"][data-mode="light"] {
+  --bg: #f4f6fb;
+  --surface: #ffffff;
+  --surface-2: #eef1f7;
+  --line: #e0e4ee;
+  --line-strong: #c9cfdc;
+  --ink: #0a0e1a;
+  --ink-2: #47516d;
+  --ink-3: #5f6985;
+  --accent: #0a0e1a;
+  --accent-ink: #d9ff6b;
+  --accent-soft: #eaf6c8;
+  --accent-strong: #222c45;
+  --accent-fg: #4d7c0f;
+  --mark: #dff3a6;
+  --ring-track: #e6e9f1;
+}
+
+/* Corporate: navy ink and confident blue. */
+[data-theme="corporate"][data-mode="light"] {
+  --bg: #f6f9fc;
+  --surface: #ffffff;
+  --surface-2: #f1f5fa;
+  --line: #dde4ed;
+  --line-strong: #c3cedb;
+  --ink: #0a2540;
+  --ink-2: #425466;
+  --ink-3: #5c6c7e;
+  --accent: #2563eb;
+  --accent-ink: #ffffff;
+  --accent-soft: #e3ecfd;
+  --accent-strong: #1d4ed8;
+  --accent-fg: #1d4ed8;
+  --mark: #d6e4ff;
+  --ring-track: #e6ecf3;
+}
+[data-theme="corporate"][data-mode="dark"] {
+  --bg: #08152a;
+  --surface: #0e1e36;
+  --surface-2: #132844;
+  --line: #1e3352;
+  --line-strong: #2b4468;
+  --ink: #e7eef8;
+  --ink-2: #a7b6ca;
+  --ink-3: #8798ae;
+  --accent: #3b82f6;
+  --accent-ink: #ffffff;
+  --accent-soft: #15315a;
+  --accent-strong: #60a5fa;
+  --accent-fg: #7cb5ff;
+  --mark: #1c3d6b;
+  --ring-track: #1a2d49;
+}
+
+/* Sage: soft greens, warm sand, terracotta for gaps. */
+[data-theme="sage"][data-mode="light"] {
+  --bg: #f3efe6;
+  --surface: #fbf9f4;
+  --surface-2: #eee9de;
+  --line: #e1d9c9;
+  --line-strong: #cfc4af;
+  --ink: #25302a;
+  --ink-2: #536059;
+  --ink-3: #69756d;
+  --accent: #4b6b5a;
+  --accent-ink: #ffffff;
+  --accent-soft: #dfe9e1;
+  --accent-strong: #3a5547;
+  --accent-fg: #3f6050;
+  --warn: #a2461d;
+  --warn-soft: #f5ddcf;
+  --mark: #d6e6da;
+  --ring-track: #e7e0d2;
+}
+[data-theme="sage"][data-mode="dark"] {
+  --bg: #121814;
+  --surface: #19211c;
+  --surface-2: #202a24;
+  --line: #2d3932;
+  --line-strong: #3c4a41;
+  --ink: #eaefe9;
+  --ink-2: #b1bdb4;
+  --ink-3: #8f9c93;
+  --accent: #9cc5ab;
+  --accent-ink: #11201a;
+  --accent-soft: #23372c;
+  --accent-strong: #b9dcc5;
+  --accent-fg: #a8d1b6;
+  --warn: #e9a07a;
+  --warn-soft: #3d2619;
+  --mark: #2b4535;
+  --ring-track: #253029;
+}
+
+/* Brutalist: cream, black outlines, hard shadows, yellow and pink. */
+[data-theme="brutalist"][data-mode="light"] {
+  --bg: #fff3d6;
+  --surface: #ffffff;
+  --surface-2: #fff9ea;
+  --line: #111111;
+  --line-strong: #111111;
+  --ink: #111111;
+  --ink-2: #2b2b2b;
+  --ink-3: #4f4f4f;
+  --accent: #ffd23f;
+  --accent-ink: #111111;
+  --accent-soft: #ffe58f;
+  --accent-strong: #ffc300;
+  --accent-fg: #111111;
+  --warn: #8a0b3a;
+  --warn-soft: #ffc2d6;
+  --good: #0b5d2e;
+  --good-soft: #b9f0cc;
+  --mark: #ffe066;
+  --ring-track: #f1e6c9;
+  --shadow: 4px 4px 0 #111111;
+}
+[data-theme="brutalist"][data-mode="dark"] {
+  --bg: #121212;
+  --surface: #1b1b1b;
+  --surface-2: #232323;
+  --line: #f2f2f2;
+  --line-strong: #f2f2f2;
+  --ink: #f2f2f2;
+  --ink-2: #d4d4d4;
+  --ink-3: #ababab;
+  --accent: #ffd23f;
+  --accent-ink: #111111;
+  --accent-soft: #4a3d0c;
+  --accent-strong: #ffe066;
+  --accent-fg: #ffd23f;
+  --warn: #ff8fb1;
+  --warn-soft: #4a1426;
+  --mark: #5c4a0a;
+  --ring-track: #2e2e2e;
+  --shadow: 4px 4px 0 #ffd23f;
+}
+
+/* Terminal: monospace, green on black (and a paper version). */
+[data-theme="terminal"][data-mode="dark"] {
+  --bg: #0a0a0a;
+  --surface: #111111;
+  --surface-2: #171717;
+  --line: #262626;
+  --line-strong: #3a3a3a;
+  --ink: #e5e5e5;
+  --ink-2: #a3a3a3;
+  --ink-3: #8a8a8a;
+  --accent: #22c55e;
+  --accent-ink: #03140a;
+  --accent-soft: #0d2a17;
+  --accent-strong: #4ade80;
+  --accent-fg: #4ade80;
+  --warn: #fbbf24;
+  --warn-soft: #2e2208;
+  --mark: #0f3a20;
+  --ring-track: #1f1f1f;
+  --shadow: none;
+}
+[data-theme="terminal"][data-mode="light"] {
+  --bg: #fafaf7;
+  --surface: #ffffff;
+  --surface-2: #f3f3ee;
+  --line: #dededa;
+  --line-strong: #c7c7bf;
+  --ink: #111111;
+  --ink-2: #444444;
+  --ink-3: #626262;
+  --accent: #15803d;
+  --accent-ink: #ffffff;
+  --accent-soft: #dcf5e3;
+  --accent-strong: #166534;
+  --accent-fg: #15803d;
+  --mark: #c8f0d4;
+  --ring-track: #ebebe6;
+  --shadow: none;
+}
+
+/* ---------------------------------------------------------------- tailwind */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-fg: var(--accent-fg);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --color-mark: var(--mark);
+  --shadow-card: var(--shadow);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-head);
+  --radius-card: var(--r-card);
+  --radius-ctl: var(--r-ctl);
+  --radius-btn: var(--r-btn);
+  --radius-sm: var(--r-sm);
+  --radius-pill: var(--r-pill);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-bg font-sans text-ink;
+    font-size: 15px;
+    line-height: 1.55;
+    transition:
+      background-color 0.25s ease,
+      color 0.25s ease;
+  }
+  ::selection {
+    background: var(--mark);
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent-fg);
+    outline-offset: 2px;
+  }
+  button:not(:disabled),
+  [role="tab"],
+  label[for] {
+    cursor: pointer;
+  }
+}
+
+/* Headlines take their character from the theme. */
+@utility display {
+  font-family: var(--font-head);
+  font-weight: var(--head-weight);
+  letter-spacing: var(--head-tracking);
+  text-transform: var(--head-transform);
+  line-height: var(--head-leading);
+}
+@utility card {
+  @apply rounded-card bg-surface shadow-card;
+  border: var(--bw) solid var(--line);
+}
+@utility eyebrow {
+  @apply text-[11px] font-semibold tracking-[0.12em] text-ink-3 uppercase;
+}
+@utility btn {
+  @apply inline-flex h-10 items-center justify-center gap-2 rounded-btn px-4 text-sm font-semibold transition-[background-color,border-color,color,transform,box-shadow] duration-150 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-45;
+}
+@utility btn-primary {
+  @apply btn bg-accent text-accent-ink hover:bg-accent-strong;
+  border: var(--bw) solid transparent;
+}
+@utility btn-quiet {
+  @apply btn bg-surface text-ink hover:border-line-strong hover:bg-surface-2;
+  border: var(--bw) solid var(--line);
+}
+@utility field {
+  @apply w-full rounded-ctl bg-surface-2 px-3.5 py-3 text-[14px] text-ink transition-colors duration-150 placeholder:text-ink-3 hover:border-line-strong focus:border-accent-fg focus:bg-surface focus:outline-none;
+  border: var(--bw) solid var(--line);
+}
+@utility chip {
+  @apply inline-flex items-center gap-1 rounded-pill px-2.5 py-0.5 text-xs font-semibold whitespace-nowrap;
+}
+@utility hairline {
+  border: var(--bw) solid var(--line);
+}
+
+/* Brutalist: buttons get the hard offset shadow and lift on hover. */
+[data-theme="brutalist"] .btn-primary,
+[data-theme="brutalist"] .btn-quiet {
+  border-color: var(--line);
+  box-shadow: 3px 3px 0 var(--line);
+}
+[data-theme="brutalist"] .btn-primary:hover:not(:disabled),
+[data-theme="brutalist"] .btn-quiet:hover:not(:disabled) {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--line);
+}
+[data-theme="brutalist"] .btn-primary:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--line);
+}
+[data-theme="brutalist"] .chip {
+  border: 1.5px solid var(--line);
+}
+
+/* The highlighted words in the headline. */
+.hl {
+  color: var(--accent-fg);
+}
+[data-theme="sage"] .hl {
+  font-style: italic;
+}
+[data-theme="brutalist"] .hl {
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 0 0.12em;
+  box-decoration-break: clone;
+}
+[data-theme="terminal"] .hl::before {
+  content: "<";
+  color: var(--ink-3);
+}
+[data-theme="terminal"] .hl::after {
+  content: "/>";
+  color: var(--ink-3);
+}
+[data-theme="terminal"] .eyebrow::before {
+  content: "// ";
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+.rise {
+  animation: rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+}
+.pop {
+  animation: pop 0.16s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: top right;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Interview prep: Markdown from the model. */
+.prose-interview {
+  font-size: 15px;
+  line-height: 1.7;
+}
+.prose-interview > * + * {
+  margin-top: 0.9em;
+}
+.prose-interview h1,
+.prose-interview h2,
+.prose-interview h3 {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-top: 1.6em;
+}
+.prose-interview p strong:only-child,
+.prose-interview li > strong:first-child {
+  display: block;
+  font-family: var(--font-head);
+  font-weight: var(--head-weight);
+  letter-spacing: -0.01em;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-top: 1.4em;
+}
+.prose-interview ul,
+.prose-interview ol {
+  padding-left: 1.25rem;
+  color: var(--ink-2);
+}
+.prose-interview ul {
+  list-style: disc;
+}
+.prose-interview ol {
+  list-style: decimal;
+}
+.prose-interview li + li {
+  margin-top: 0.35em;
+}
+.prose-interview li::marker {
+  color: var(--ink-3);
+}
+.prose-interview hr {
+  border-color: var(--line);
+}
+
+/* Verdict and summary: the theme's voice, but always readable as a sentence. */
+.quote {
+  font-family: var(--font-head);
+  font-weight: var(--head-weight);
+  letter-spacing: -0.01em;
+}
+[data-theme="midnight"] .quote,
+[data-theme="corporate"] .quote {
+  font-weight: 500;
+}
+[data-theme="sage"] .quote {
+  font-style: italic;
+}
+[data-theme="brutalist"] .quote {
+  font-family: var(--font-body);
+  font-weight: 700;
+}
+[data-theme="terminal"] .quote {
+  font-weight: 400;
+}
+
+/* ---------------------------------------------------------------- brutalist colour pops
+   Yellow stays the action colour; the other pops label regions so the page reads like
+   a sticker sheet: pink = your resume, blue = the job, mint = found, lilac = AI. */
+[data-theme="brutalist"] {
+  --pop-yellow: #ffd23f;
+  --pop-pink: #ff8fb1;
+  --pop-blue: #7cc4ff;
+  --pop-mint: #7ee8a8;
+  --pop-orange: #ff9f5a;
+  --pop-lilac: #b9a6ff;
+  --pop-ink: #111111;
+  --pop-shadow: #111111;
+}
+[data-theme="brutalist"][data-mode="dark"] {
+  --pop-shadow: #f2f2f2;
+}
+
+/* Dotted grid paper behind everything. */
+[data-theme="brutalist"] body {
+  background-image: radial-gradient(color-mix(in srgb, var(--ink) 16%, transparent) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+[data-theme="brutalist"] header {
+  background-color: var(--bg);
+  backdrop-filter: none;
+}
+
+/* Hero sticker. */
+[data-theme="brutalist"] .sticker {
+  display: inline-block;
+  padding: 0.35rem 0.6rem;
+  background: var(--pop-pink);
+  color: var(--pop-ink);
+  border: 2px solid var(--pop-ink);
+  box-shadow: 3px 3px 0 var(--pop-shadow);
+  transform: rotate(-1.5deg);
+}
+
+/* Coloured hard shadows on the main cards. */
+[data-theme="brutalist"] .card[data-pop] {
+  box-shadow: 6px 6px 0 var(--pop);
+}
+[data-theme="brutalist"] [data-pop="yellow"] { --pop: var(--pop-yellow); }
+[data-theme="brutalist"] [data-pop="pink"] { --pop: var(--pop-pink); }
+[data-theme="brutalist"] [data-pop="blue"] { --pop: var(--pop-blue); }
+[data-theme="brutalist"] [data-pop="mint"] { --pop: var(--pop-mint); }
+[data-theme="brutalist"] [data-pop="orange"] { --pop: var(--pop-orange); }
+[data-theme="brutalist"] [data-pop="lilac"] { --pop: var(--pop-lilac); }
+
+[data-theme="brutalist"] .card[data-pop] .step-badge {
+  background: var(--pop);
+  color: var(--pop-ink);
+  border: 2px solid var(--pop-ink);
+}
+
+/* Verdict as a blue callout block. */
+[data-theme="brutalist"] .verdict {
+  background: var(--pop-blue);
+  color: var(--pop-ink);
+  border: 2px solid var(--pop-ink);
+  box-shadow: 5px 5px 0 var(--pop-shadow);
+  padding: 1rem 1.25rem;
+}
+
+/* Tabs: the active tab fills with its own colour. */
+[data-theme="brutalist"] [role="tab"] {
+  border: 2px solid transparent;
+  margin-bottom: 6px;
+}
+[data-theme="brutalist"] [role="tab"]:hover {
+  border-color: var(--line);
+}
+[data-theme="brutalist"] [role="tab"][aria-selected="true"] {
+  background: var(--pop);
+  color: var(--pop-ink);
+  border-color: var(--pop-ink);
+  box-shadow: 3px 3px 0 var(--pop-shadow);
+}
+
+/* Keyword chips: mint = found, pink = missing. */
+[data-theme="brutalist"] .chip.bg-accent-soft {
+  background: var(--pop-mint);
+  color: var(--pop-ink);
+}
+[data-theme="brutalist"] .chip.bg-warn-soft {
+  background: var(--pop-pink);
+  color: var(--pop-ink);
+}
+[data-theme="brutalist"] mark {
+  background: var(--pop-mint);
+  color: var(--pop-ink);
+}
+
+/* Lists: coloured number squares and mint checks. */
+[data-theme="brutalist"] .num-badge {
+  display: grid;
+  place-items: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  font-size: 0.95rem;
+  line-height: 1;
+  color: var(--pop-ink);
+  border: 2px solid var(--pop-ink);
+  background: var(--pop-yellow);
+}
+[data-theme="brutalist"] li:nth-child(5n + 2) > .num-badge { background: var(--pop-pink); }
+[data-theme="brutalist"] li:nth-child(5n + 3) > .num-badge { background: var(--pop-blue); }
+[data-theme="brutalist"] li:nth-child(5n + 4) > .num-badge { background: var(--pop-mint); }
+[data-theme="brutalist"] li:nth-child(5n + 5) > .num-badge { background: var(--pop-orange); }
+[data-theme="brutalist"] .check-badge {
+  background: var(--pop-mint);
+  color: var(--pop-ink);
+  border: 1.5px solid var(--pop-ink);
+  border-radius: 0;
+}
+
+/* Primary buttons flash pink on hover. */
+[data-theme="brutalist"] .btn-primary:hover:not(:disabled) {
+  background: var(--pop-pink);
+}

@@ -1,0 +1,24 @@
+[project]
+name = "ai-resume-assistant"
+version = "1.0.0"
+description = "Match your resume to a job description and get AI-powered ATS feedback."
+readme = "README.md"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"resume_assistant/prompts.py" = ["E501"]
+"resume_assistant/ats.py" = ["E501"]
+
+[tool.ruff.lint.flake8-bugbear]
+extend-immutable-calls = ["fastapi.File", "fastapi.Header", "fastapi.Depends"]

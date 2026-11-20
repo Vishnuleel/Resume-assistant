@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" data-theme="brutalist" data-mode="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Match your resume to a job description and get honest, specific fixes." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>AI Resume Assistant</title>
+    <script>
+      // Apply the saved theme before first paint so there's no flash.
+      (function () {
+        var s = {};
+        try { s = JSON.parse(localStorage.getItem("ra:theme") || "{}"); } catch (e) {}
+        var p = new URLSearchParams(location.search);
+        var theme = p.get("theme") || s.theme || "brutalist";
+        var mode = p.get("mode") || s.mode || "system";
+        if (mode === "system") mode = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.dataset.mode = mode;
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

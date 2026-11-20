@@ -1,0 +1,36 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Tooling
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Personal files (don't upload real resumes)
+*.pdf
+*.docx
+
+# Local tool configs
+.impeccable/
+.claude/
+
+# Personal resumes dropped into examples/ (the sample .txt files stay)
+examples/*
+!examples/sample_*.txt
+.github/hooks/

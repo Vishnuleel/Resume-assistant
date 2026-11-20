@@ -1,0 +1,13 @@
+# Render Blueprint: New -> Blueprint -> pick this repo -> Apply.
+# Visitors bring their own free Groq / Gemini key, so no API keys are set here.
+services:
+  - type: web
+    name: ai-resume-assistant
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: PUBLIC_MODE
+        value: "1"

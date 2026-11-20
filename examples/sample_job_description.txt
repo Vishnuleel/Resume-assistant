@@ -1,0 +1,21 @@
+Junior Machine Learning Engineer
+
+We are looking for a Machine Learning Engineer to join our data team.
+
+Responsibilities
+- Build and deploy machine learning models into production using Python.
+- Develop data pipelines with SQL, Pandas and Apache Spark.
+- Deploy models as REST APIs using FastAPI and Docker on AWS.
+- Monitor model performance and set up CI/CD workflows with GitHub Actions.
+- Collaborate with product teams to define metrics and run A/B tests.
+
+Requirements
+- Degree in Computer Science or a related field.
+- Strong Python skills; experience with scikit-learn, PyTorch or TensorFlow.
+- Familiarity with SQL, Docker and cloud platforms (AWS or GCP).
+- Understanding of machine learning fundamentals, statistics and data visualization.
+- Good communication skills and Git version control.
+
+Nice to have
+- Experience with NLP, LLMs or Hugging Face Transformers.
+- Kubernetes, MLflow or Airflow.

@@ -1,0 +1,21 @@
+Alex Morgan
+Data Analyst | alex.morgan@example.com | github.com/example
+
+SUMMARY
+Data analyst with 2 years of experience turning data into business insights.
+
+EXPERIENCE
+Data Analyst, Example Retail Co. (2023 - Present)
+- Worked on sales dashboards in Tableau.
+- Wrote SQL queries to pull data for the marketing team.
+- Helped build a customer churn model in Python with scikit-learn.
+- Automated weekly reports with Pandas.
+
+Intern, Example Analytics (2022)
+- Cleaned datasets and made charts.
+
+SKILLS
+Python, SQL, Pandas, scikit-learn, Tableau, Excel, Git
+
+EDUCATION
+B.Sc. Computer Science, Example University (2022)
